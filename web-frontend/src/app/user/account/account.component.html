@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+      <div>
+        <h1>Hello, {{UserName}}</h1>
+        <p>Your Account is your own space for your personal information, recipe box, and special promotions.</p>
+      </div>
+  </div>
+  <hr>
+    <ul class="list-inline">
+      <li><a routerLink="my-recipes">MY RECIPES</a></li>
+      <li><a routerLink="recipes-box">RECIPES BOX</a></li>
+      <li><a routerLink="my-profile">VIEW MY PROFILE</a></li>
+    </ul>
+    <br>
+    <router-outlet></router-outlet>
+</div>
