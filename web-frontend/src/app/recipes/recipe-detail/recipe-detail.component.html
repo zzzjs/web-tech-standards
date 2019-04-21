@@ -1,66 +1,69 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-xs-12">
-      <h1>{{ recipe.name }}</h1>
+      <h1>{{ recipe.title }}</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <img
-        [src]="recipe.imagePath"
-        alt="{{ recipe.name }}"
+        [src]="recipe.photo.link"
+        alt="{{ recipe.photo.name }}"
         class="img-responsive"
         style="max-height: 700px">
     </div>
   </div>
   <br>
+  <div style="margin-left: 50px; margin-right: 50px">
   <div class="row">
     <div class="col-md-4">
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="width:400px;height:30px;text-align:center;line-height:10px;">
       <button
         class="btn btn-success"
         type="button"
+
         (click)="addToFavorite()"
       ><i class="ion ion-md-heart"></i>   Like</button>
     </div>
     <div class="col-md-4">
-      <ul class="list-inline">
-        <li style="font-size: 200%"><a href=""><i class="ion ion-logo-facebook"></i></a></li>
-        <li style="font-size: 200%"><a href=""><i class="ion ion-logo-twitter"></i></a></li>
-        <li style="font-size: 200%"><a href=""><i class="ion ion-logo-instagram"></i></a></li>
-        <li style="font-size: 200%"><a href=""><i class="ion ion-logo-pinterest"></i></a></li>
-        <li style="font-size: 200%"><a href=""><i class="ion ion-md-print"></i></a></li>
-      </ul>
+      <!--<ul class="list-inline">-->
+        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-facebook"></i></a></li>-->
+        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-twitter"></i></a></li>-->
+        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-instagram"></i></a></li>-->
+        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-pinterest"></i></a></li>-->
+        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-md-print"></i></a></li>-->
+      <!--</ul>-->
     </div>
   </div>
   <hr>
   <br>
-  <div class="row">
-    <div class="col-xs-12">
-      {{ recipe.description }}
+    <div class="row">
+      <div class="col-xs-12">
+        {{ recipe.description }}
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-xs-6">
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let ingredient of recipe.ingredients">
-          {{ingredient}}
-        </li>
-      </ul>
-    </div>
-    <div class="col-xs-6">
-      <ul class="list-group">
-        <li
-          class="list-group-item clearfix"
-          *ngFor="let direction of recipe.directions; let i = index">
-          <span class="badge pull-left">{{i}}</span>  {{'___'}}{{direction}}
-        </li>
-      </ul>
+    <br>
+    <div class="row">
+      <div class="col-xs-6">
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let ingredient of recipe.ingredients">
+            {{ingredient}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-6">
+        <ul class="list-group">
+          <li
+            class="list-group-item clearfix"
+            *ngFor="let direction of recipe.directions; let i = index">
+            <span class="badge pull-left">{{i+1}}</span>{{'&#12288;'}}{{direction}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

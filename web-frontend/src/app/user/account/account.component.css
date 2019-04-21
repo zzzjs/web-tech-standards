@@ -1,0 +1,29 @@
+h1 {
+  margin: 0 0 20px 0;
+  color: black;
+  font-size: 340%;
+  font-style: italic;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+}
+
+h1:after {
+  display: block;
+  height: 2px;
+  width: 100px;
+  background-color: black;
+  content: " ";
+  margin: 15px 0 0;
+}
+img {
+  width: 150px;
+  border-radius: 50%;
+}
+p {
+  font-size: 130%;
+}
+a {
+  color: #971b1e;
+  font-size: 150%;
+  letter-spacing: 2px;
+}

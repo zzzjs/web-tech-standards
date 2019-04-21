@@ -1,16 +1,33 @@
-<div class="container">
+<div class="container" style="margin: 50px">
   <div class="row">
-      <div>
-        <h1>Hello, {{UserName}}</h1>
-        <p>Your Account is your own space for your personal information, recipe box, and special promotions.</p>
+    <div class="col-md-2">
+      <img src="https://modern-ruby.glitch.me/uploads/photo-1555084283224.jpg" alt="Avatar">
+    </div>
+    <div class="col-md-10">
+      <h1>Hello</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Your Account is your own space for your personal information, recipe box, and special promotions.</p>
+        </div>
+        <div class="col-md-6">
+          <p>{{user.username}}</p>
+          <a style="color: #b0a692; font-size: 100%" routerLink="/">EDIT MY ACCOUNT</a>
+        </div>
       </div>
+    </div>
   </div>
   <hr>
-    <ul class="list-inline">
-      <li><a routerLink="my-recipes">MY RECIPES</a></li>
-      <li><a routerLink="recipes-box">RECIPES BOX</a></li>
-      <li><a routerLink="my-profile">VIEW MY PROFILE</a></li>
-    </ul>
-    <br>
-    <router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-md-3">
+      <a routerLink="my-recipes">MY RECIPES</a>
+    </div>
+    <div class="col-md-3">
+      <a routerLink="recipes-box">RECIPES BOX</a>
+    </div>
+    <div class="col-md-3">
+      <a routerLink="my-profile">VIEW MY PROFILE</a>
+    </div>
+  </div>
+  <br>
+  <router-outlet></router-outlet>
 </div>

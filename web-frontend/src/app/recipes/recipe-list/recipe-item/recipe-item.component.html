@@ -1,17 +1,9 @@
 <a
-  style="cursor: pointer;"
+  style="cursor: pointer; color: #afa691"
   [routerLink]="[index]"
   routerLinkActive="active"
-  class="list-group-item clearfix">
+  class="clearfix">
   <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-    <p class="list-group-item-text" *ngIf="false">{{ recipe.description }}</p>
+    <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
   </div>
-  <span class="pull-right" *ngIf="false">
-        <img
-          [src]="recipe.imagePath"
-          alt="{{ recipe.name }}"
-          class="img-responsive"
-          style="max-height: 50px;">
-      </span>
 </a>

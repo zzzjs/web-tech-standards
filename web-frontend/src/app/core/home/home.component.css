@@ -18,14 +18,64 @@
 .hero-text-box {
   position: absolute;
   width: 1140px;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 h1 {
   margin: 0 0 20px 0;
   color: white;
-  font-size: 240%;
+  font-size: 340%;
   word-spacing: 4px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+h4 {
+  color: white;
+  font-size: 220%;
+  text-align: center;
+}
+
+h4:after {
+  display: block;
+  height: 2px;
+  width: 50px;
+  background-color: white;
+  content: " ";
+  margin: 15px 0 0 48%;
+}
+
+.btn {
+  background-color: #afa691;
+  border: 1px solid #afa691;
+  width: 230px;
+  height: 45px;
+  color: white;
+  font-size: 130%;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.btn:link,
+.btn:visited,
+input[type=submit]{
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+  background-color: #afa667;
+}
+
+.center {
+  margin: auto;
+  width: 23%;
+  padding: 15px;
 }

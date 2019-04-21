@@ -1,0 +1,20 @@
+h1 {
+  margin: 10px 10px 20px 0;
+  color: #971b1e;
+  font-size: 240%;
+  word-spacing: 4px;
+  letter-spacing: 1px;
+}
+
+h1:after {
+  display: block;
+  height: 2px;
+  width: 100px;
+  background-color: black;
+  content: " ";
+  margin: 15px 0 0;
+}
+
+.row {
+  margin: 50px;
+}

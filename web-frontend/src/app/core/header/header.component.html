@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="background-color: #f6f1e5">
   <div class="container-fluid">
     <!--<div class="navbar-header">-->
       <!--<a routerLink="/" class="navbar-brand" *ngIf="authService.isAuthenticated()">Admin</a>-->
@@ -14,12 +14,11 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <ng-template [ngIf]="!authService.isAuthenticated()">
-        <li><a href="#">Register</a></li>
-        <li><a routerLink="/signin">Login</a></li>
+        <li style="margin-right: 20px"><a routerLink="/signin">LOGIN/SIGN UP</a></li>
       </ng-template>
       <ng-template [ngIf]="authService.isAuthenticated()">
         <li><a routerLink="/user">{{User}}</a></li>
-        <li><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
+        <li><a style="cursor: pointer" (click)="onLogout()">SIGN OUT</a></li>
       </ng-template>
     </ul>
   </div>

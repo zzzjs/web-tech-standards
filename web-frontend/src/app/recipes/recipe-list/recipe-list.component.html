@@ -1,10 +1,66 @@
-<div class="container">
+<div class="row" style="background-color: #f6f1e5; ">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-6">
+      <h1>Sichuan</h1>
       <app-recipe-item
-        *ngFor="let recipeEl of recipes; let i = index"
+        *ngFor="let recipeEl of sichuan; let i = index"
         [recipe]="recipeEl"
-        [index]="i"></app-recipe-item>
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+    <div class="col-xs-6">
+      <h1>Hunan</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of hunan; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <h1>Fujian</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of fujian; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+    <div class="col-xs-6">
+      <h1>Cantonese</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of cantonese; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <h1>Jiangsu</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of jiangsu; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+    <div class="col-xs-6">
+      <h1>Shandong</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of shandong; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <h1>Anhui</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of anhui; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
+    </div>
+    <div class="col-xs-6">
+      <h1>Zhejiang</h1>
+      <app-recipe-item
+        *ngFor="let recipeEl of zhejiang; let i = index"
+        [recipe]="recipeEl"
+        [index]="recipeEl.id"></app-recipe-item>
     </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RecipeService} from '../../../recipes/recipe.service';
-import {Recipe} from '../../../recipes/recipe.model';
+import {Recipe} from '../../../recipes/models/recipe.model';
+import {UserService} from '../../user.service';
+import {Favorite} from '../../models/favorite.model';
 
 @Component({
   selector: 'app-account-recipes-box',
@@ -9,10 +11,12 @@ import {Recipe} from '../../../recipes/recipe.model';
 })
 export class AccountRecipesBoxComponent implements OnInit {
   recipes: Recipe[];
-  constructor(private recipeService: RecipeService) { }
+  favorite: Favorite[];
+  constructor(private recipeService: RecipeService,
+              private userService: UserService) { }
 
   ngOnInit() {
-    this.recipes = this.recipeService.getRecipes();
+    this.favorite = this.userService.getFavorite();
   }
 
 }

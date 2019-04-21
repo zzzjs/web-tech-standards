@@ -28,4 +28,8 @@ export class SigninComponent implements OnInit {
     //     console.log(error1);
     //   });
   }
+
+  onSignUp() {
+
+  }
 }

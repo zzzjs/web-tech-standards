@@ -2,10 +2,10 @@
   <ul class="meals-showcase clearfix">
     <li
       class="clearfix"
-      *ngFor="let recipe of recipes; let i = index">
+      *ngFor="let fa of favorite; let i = index">
       <figure class="meal-photo" style="position: relative">
-        <img [src]="recipe.imagePath" alt="Korean bibimbap with egg and vegetables">
-        <span style="position: absolute; bottom: 50%; left: 20%; color: white; font-size: 150%">{{recipe.name}}</span>
+        <img [src]="fa.link" alt="">
+        <span style="position: absolute; bottom: 50%; left: 20%; color: white; font-size: 150%">{{fa.title}}</span>
       </figure>
     </li>
   </ul>

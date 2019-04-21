@@ -21,7 +21,9 @@ import { AccountStartComponent } from './user/account/account-start/account-star
 import { AccountMyRecipesComponent } from './user/account/account-my-recipes/account-my-recipes.component';
 import { AccountRecipesBoxComponent } from './user/account/account-recipes-box/account-recipes-box.component';
 import { AccountMyProfileComponent } from './user/account/account-my-profile/account-my-profile.component';
-import { SubmitARecipeComponent } from './user/submit-a-recipe/submit-a-recipe.component';
+import {SubmitARecipeComponent} from './user/submit-a-recipe/submit-a-recipe.component';
+import {UserService} from './user/user.service';
+import {NetConnectService} from './shared/net.connect.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { SubmitARecipeComponent } from './user/submit-a-recipe/submit-a-recipe.c
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, RecipeService],
+  providers: [AuthService, RecipeService, UserService, NetConnectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
