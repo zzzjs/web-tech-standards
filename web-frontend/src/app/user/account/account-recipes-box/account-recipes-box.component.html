@@ -5,7 +5,11 @@
       class="clearfix"
       *ngFor="let fp of favoritePhotos; let i = index">
       <figure class="meal-photo" style="position: relative">
-        <img [src]="fp.link" alt="">
+        <img
+          [src]="fp.link"
+          alt=""
+          routerLink="/recipes/../../{{fp.recipeId}}"
+          routerLinkActive="active">
         <span style="position: absolute; bottom: 50%; left: 20%; color: white; font-size: 150%">{{fp.title}}</span>
       </figure>
     </li>

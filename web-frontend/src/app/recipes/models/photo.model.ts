@@ -3,6 +3,7 @@ export class Photo {
   public contentType: string;
   public name: string;
   public title: string;
+  public recipeId: string;
 
   constructor(link: string, contentType: string, name: string) {
     this.link = link;

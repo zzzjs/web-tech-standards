@@ -4,7 +4,7 @@
     <app-my-recipe-item
       *ngFor="let recipeEl of recipes; let i = index"
       [recipe]="recipeEl"
-      [index]="i"></app-my-recipe-item>
+      [index]="recipeEl.id"></app-my-recipe-item>
   </div>
 </div>
 <div class="row; center">

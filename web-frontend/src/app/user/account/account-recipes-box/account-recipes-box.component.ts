@@ -33,6 +33,7 @@ export class AccountRecipesBoxComponent implements OnInit {
     this.favorites.forEach( (favorite) => {
       const temp = this.recipeService.getRecipe(favorite.recipeid);
       temp.photo.title = temp.title;
+      temp.photo.recipeId = temp.id;
       this.favoritePhotos.push(temp.photo);
     });
   }
