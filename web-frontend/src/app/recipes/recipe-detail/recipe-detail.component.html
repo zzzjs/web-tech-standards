@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row text-center">
-    <div class="col-xs-12" style="margin-bottom: 10px">
+    <div class="col-xs-12" style="margin-bottom: 5px">
       <h1>{{ recipe.title }}</h1>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-12" style="margin-bottom: 10px">
+      <h3><i class="ion ion-md-heart" style="color: #afa691"></i>{{'&#12288;'}}{{recipe.totallikes }}</h3>
     </div>
   </div>
   <div class="row">
@@ -38,7 +43,7 @@
         type="button"
         style="margin-top: 40px"
         *ngIf="Auth"
-        (click)="addToFavorite()"
+        (click)="changeFavorite()"
       ><i class="ion ion-md-heart"></i>   {{favorite}}</button>
       <button
         class="btn"

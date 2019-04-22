@@ -25,6 +25,8 @@ h1:after {
   font-weight: 600;
 }
 
+.btn:focus {outline: none}
+
 .btn:link,
 .btn:visited,
 input[type=submit]{

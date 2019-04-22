@@ -47,4 +47,18 @@ export class UserService {
     return temp;
   }
 
+  addFavorite(recipe: any) {
+    this.user.favorite.push(recipe);
+    this.userChanged.next(this.user);
+  }
+
+  removeFavorite(recipe: any) {
+    for (let i = 0; i < this.user.favorite.length; i++) {
+      if (this.user.favorite[i].recipeid === recipe.recipeid) {
+        this.user.favorite.splice(i, 1);
+      }
+    }
+    this.userChanged.next(this.user);
+  }
+
 }

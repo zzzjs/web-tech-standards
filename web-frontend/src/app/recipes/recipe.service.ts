@@ -64,7 +64,15 @@ export class RecipeService {
     // console.log(this.recipes[0].id);
   }
 
-  addRecipe(value: SubmitRecipe) {
+  addFavorite(recipeId: string) {
+    for (let i = 0; i < this.recipes.length; i++) {
+      if (this.recipes[i].id === recipeId) { this.recipes[i].totallikes += 1; }
+    }
+  }
 
+  removeFavorite(recipeId: string) {
+    for (let i = 0; i < this.recipes.length; i++) {
+      if (this.recipes[i].id === recipeId) { this.recipes[i].totallikes -= 1; }
+    }
   }
 }
