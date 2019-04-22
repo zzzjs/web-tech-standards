@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {UserAccountModel} from './user.account.model';
+import {CORSProxy, Service_HostName} from '../shared/constants';
+import {Recipe} from '../recipes/models/recipe.model';
+import {User} from '../user/models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -11,9 +14,16 @@ export class AuthService {
   constructor(private router: Router,
               private httpClient: HttpClient) {}
 
-  signinUser(email: string, password: string) {
-    this.userAccount = new UserAccountModel(0, email, password);
-    return this.httpClient.post('http://localhost:8080/api/doctor/login', this.userAccount);
+  signinUser(username: string, password: string) {
+    this.userAccount = new UserAccountModel(username, password);
+    console.log(this.userAccount);
+    return this.httpClient.post(Service_HostName + '/login', this.userAccount);
+  }
+
+  signupUser(username: string, password: string) {
+    this.userAccount = new UserAccountModel(username, password);
+    console.log(this.userAccount);
+    return this.httpClient.post(Service_HostName + '/signup', this.userAccount);
   }
 
   logout() {

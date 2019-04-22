@@ -1,11 +1,15 @@
-<p>
-  account-my-recipes works!
-</p>
+<p *ngIf="recipes.length == 0">You do not have any Approved or Submitted Recipes.</p>
 <div class="row">
   <div class="col-xs-12">
+    <app-my-recipe-item
+      *ngFor="let recipeEl of recipes; let i = index"
+      [recipe]="recipeEl"
+      [index]="i"></app-my-recipe-item>
+  </div>
+</div>
+<div class="row; center">
     <button
       type="button"
       class="btn"
       (click)="onNewRecipe()">SUBMIT A RECIPE</button>
-  </div>
 </div>

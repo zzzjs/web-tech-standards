@@ -29,6 +29,11 @@ input[type=submit]:active {
 
 .center {
   margin: auto;
-  width: 19%;
-  padding: 10px;
+  width: 23%;
+  padding: 35px;
+}
+
+p {
+  font-size: 130%;
+  text-align: center;
 }

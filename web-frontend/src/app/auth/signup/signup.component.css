@@ -1,0 +1,67 @@
+.btn {
+  background-color: #afa691;
+  border: 1px solid #afa691;
+  width: 250px;
+  height: 35px;
+  color: white;
+  font-size: 100%;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.btn:link,
+.btn:visited,
+input[type=submit]{
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+  background-color: #afa667;
+}
+
+.center {
+  margin: auto;
+  width: 23%;
+  padding: 15px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 150%;
+}
+
+.vl {
+  border-left: 2px solid #afa691;
+  height: 400px;
+  position: absolute;
+  left: 41%;
+  margin-left: -3px;
+  top: 50px;
+}
+/* --------------LINKS---------------*/
+a:link,
+a:visited {
+  color: #afa691;
+  text-decoration: none;
+  padding-bottom: 1px;
+  font-size: 130%;
+  transition: border-bottom 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+  color: #aa9c51;
+}
+
+.invalid {
+  font-size: 100%;
+  color: red;
+  font-style: italic;
+}

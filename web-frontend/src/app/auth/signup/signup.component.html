@@ -1,3 +1,50 @@
-<p>
-  signup works!
-</p>
+<div class="row" style="padding: 50px">
+  <div class="col-md-6" style="padding-right: 200px">
+    <h2>Login</h2>
+    <br>
+    <div class="mailpassword-invalid">
+      <p class="invalid">{{invalid}}</p>
+    </div>
+    <form (ngSubmit)="onSignup(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="username">USERNAME</label>
+        <input
+          type="email"
+          id="username"
+          name="username"
+          ngModel class="form-control"
+          [required]="true">
+      </div>
+      <div class="form-group">
+        <label for="password1">PASSWORD</label>
+        <input
+          type="password"
+          id="password1"
+          name="password1"
+          ngModel
+          class="form-control"
+          [required]="true">
+      </div>
+      <div class="form-group">
+        <label for="password2">CONFIRM PASSWORD</label>
+        <input
+          type="password"
+          id="password2"
+          name="password2"
+          ngModel
+          class="form-control"
+          [required]="true">
+      </div>
+      <br>
+      <button class="btn" type="submit" [disabled]="!f.valid">CREATE NEW ACCOUNT</button>
+    </form>
+  </div>
+  <div class="vl"></div>
+  <div class="col-md-6">
+    <div class="row">
+      <p style="font-weight: 600; margin-top: 120px">Already have an Account?</p>
+      <br>
+      <a routerLink="/signin">LOGIN HERE</a>
+    </div>
+  </div>
+</div>

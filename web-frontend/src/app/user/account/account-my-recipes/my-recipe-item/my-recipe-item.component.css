@@ -1,0 +1,13 @@
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80%;
+  width: 80%;
+}
+.center {
+  padding: 40px 0;
+}
+h4,p {
+  font-size: 150%;
+}

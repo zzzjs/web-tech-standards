@@ -31,3 +31,8 @@
   opacity: 1;
   transform: scale(1.03);
 }
+
+p {
+  font-size: 130%;
+  text-align: center;
+}

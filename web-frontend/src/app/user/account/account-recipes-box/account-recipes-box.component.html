@@ -1,11 +1,12 @@
+<p *ngIf="favoritePhotos.length == 0">You do not saved any Recipes.</p>
 <div class="section-meals">
   <ul class="meals-showcase clearfix">
     <li
       class="clearfix"
-      *ngFor="let fa of favorite; let i = index">
+      *ngFor="let fp of favoritePhotos; let i = index">
       <figure class="meal-photo" style="position: relative">
-        <img [src]="fa.link" alt="">
-        <span style="position: absolute; bottom: 50%; left: 20%; color: white; font-size: 150%">{{fa.title}}</span>
+        <img [src]="fp.link" alt="">
+        <span style="position: absolute; bottom: 50%; left: 20%; color: white; font-size: 150%">{{fp.title}}</span>
       </figure>
     </li>
   </ul>

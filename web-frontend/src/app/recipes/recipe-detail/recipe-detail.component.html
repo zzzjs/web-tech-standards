@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row text-center">
-    <div class="col-xs-12">
+    <div class="col-xs-12" style="margin-bottom: 10px">
       <h1>{{ recipe.title }}</h1>
     </div>
   </div>
@@ -17,24 +17,49 @@
   <div style="margin-left: 50px; margin-right: 50px">
   <div class="row">
     <div class="col-md-4">
-
+      <div class="row">
+        <div class="col-md-6" style="padding-left: 80px">
+          <p>PREP TIME</p>
+          <div class="circle">
+            {{prepTime}}
+          </div>
+        </div>
+        <div class="col-md-6" style="padding-left: 80px">
+          <p>COOK TIME</p>
+          <div class="circle">
+            {{cookTime}}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-4" style="width:400px;height:30px;text-align:center;line-height:10px;">
       <button
-        class="btn btn-success"
+        class="btn"
         type="button"
-
+        style="margin-top: 40px"
+        *ngIf="Auth"
         (click)="addToFavorite()"
-      ><i class="ion ion-md-heart"></i>   Like</button>
+      ><i class="ion ion-md-heart"></i>   {{favorite}}</button>
+      <button
+        class="btn"
+        type="button"
+        style="margin-top: 40px"
+        *ngIf="!Auth"
+        routerLink="/signin"
+      >SIGN IN/SIGN UP</button>
+
     </div>
-    <div class="col-md-4">
-      <!--<ul class="list-inline">-->
-        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-facebook"></i></a></li>-->
-        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-twitter"></i></a></li>-->
-        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-instagram"></i></a></li>-->
-        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-logo-pinterest"></i></a></li>-->
-        <!--<li style="font-size: 200%"><a href=""><i class="ion ion-md-print"></i></a></li>-->
-      <!--</ul>-->
+    <div class="col-md-4" style="margin-left: 300px">
+      <div class="row; center">
+        <p>SHARED</p>
+        <ul class="list-inline">
+          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-facebook" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-twitter" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-instagram" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-pinterest" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a href=""><i class="ion ion-md-print" style="color: #afa691"></i></a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <hr>

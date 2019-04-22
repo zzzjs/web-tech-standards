@@ -2,5 +2,53 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  height: 80%;
+  width: 80%;
+}
+
+.btn {
+  background-color: #afa691;
+  border: 1px solid #afa691;
+  color: white;
+  font-size: 100%;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.btn:link,
+.btn:visited,
+input[type=submit]{
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+  background-color: #afa667;
+}
+
+.circle{
+  height: 80%;
+  width: 80%;
+  border-radius:50%;
+  text-align:center;
+  font-size: 15px;
+  padding:36% 0;
+  line-height:0;
+  position:relative;
+  border: 3px solid #afa691;
+  color: #afa691;
+  font-family: Helvetica, Arial Black, sans, serif;
+}
+.center {
+  text-align: center;
+}
+p {
+  font-size: 100%;
+  color: #afa691;
 }

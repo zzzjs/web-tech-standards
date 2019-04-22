@@ -1,4 +1,4 @@
-export class Favorite {
+export class PersonalRecipes {
   public recipeid: string;
   public title: string;
 
@@ -7,5 +7,3 @@ export class Favorite {
     this.title = title;
   }
 }
-
-export default Favorite;

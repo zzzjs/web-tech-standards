@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-md-8">
       <h1>Share your favorite real cheese recipe.</h1>
-      <h4>Real Cheese People know the best recipe is one shared with friends. Share your favorite recipes with us for a chance to have them featured on Sargento.com!</h4>
+      <h4>Real Cheese People know the best recipe is one shared with friends. Share your favorite recipes with us for a chance to have them featured here!</h4>
     </div>
   </div>
-  <div class="row">
+  <div class="row" style="margin-bottom: 50px">
     <div class="col-md-7">
-      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="recipeForm">
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
@@ -20,6 +20,20 @@
             </div>
           </div>
         </div>
+        <!--<div class="row">-->
+          <!--<div class="col-md-12">-->
+            <!--<div class="form-group">-->
+              <!--<label for="uploadPhoto">UPLOAD A PHOTO</label>-->
+              <!--<input-->
+                <!--type="file"-->
+                <!--id="uploadPhoto"-->
+                <!--formControlName="uploadPhoto"-->
+                <!--class="form-control"-->
+                <!--accept="image/png,image/jpeg"-->
+                <!--required />-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
@@ -160,7 +174,8 @@
             <button
               type="button"
               class="btn"
-              [disabled]="!recipeForm.valid">SUBMIT RECIPE</button>
+              [disabled]="!recipeForm.valid"
+              (click)="onSubmit()">SUBMIT RECIPE</button>
             <!--<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>-->
           </div>
         </div>

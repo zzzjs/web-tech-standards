@@ -1,19 +1,17 @@
-import {PrivateInfo} from './privateInfo.model';
 import {Favorite} from './favorite.model';
+import {PersonalRecipes} from './personalRecipes';
 
 export class User {
   private _username: string;
   private _password: string;
   private _created: string;
-  private _privateInfo: PrivateInfo;
   private _favorite: Favorite[];
-  private _PersonalRecipes: string[];
+  private _PersonalRecipes: PersonalRecipes[];
 
-  constructor(username: string, password: string, created: string, privateInfo: PrivateInfo, favorite: Favorite[], PersonalRecipes: string[]) {
+  constructor(username: string, password: string, created: string, favorite: Favorite[], PersonalRecipes: PersonalRecipes[]) {
     this._username = username;
     this._password = password;
     this._created = created;
-    this._privateInfo = privateInfo;
     this._favorite = favorite;
     this._PersonalRecipes = PersonalRecipes;
   }
@@ -43,14 +41,6 @@ export class User {
     this._created = value;
   }
 
-  get privateInfo(): PrivateInfo {
-    return this._privateInfo;
-  }
-
-  set privateInfo(value: PrivateInfo) {
-    this._privateInfo = value;
-  }
-
   get favorite(): Favorite[] {
     return this._favorite;
   }
@@ -59,11 +49,11 @@ export class User {
     this._favorite = value;
   }
 
-  get PersonalRecipes(): string[] {
+  get PersonalRecipes(): PersonalRecipes[] {
     return this._PersonalRecipes;
   }
 
-  set PersonalRecipes(value: string[]) {
+  set PersonalRecipes(value: PersonalRecipes[]) {
     this._PersonalRecipes = value;
   }
 }

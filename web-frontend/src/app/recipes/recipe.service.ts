@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {Recipe} from './models/recipe.model';
 import {Photo} from './models/photo.model';
+import {SubmitRecipe} from './models/submit.recipe.model';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class RecipeService {
@@ -41,16 +43,28 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  getRecipe(index: number) {
-    return this.recipes[index];
+  getRecipe(index: string) {
+    let temp: Recipe;
+    this.recipes.forEach((recipe) => {
+      if (recipe.id === index) { temp = recipe; }
+    });
+    return temp;
   }
 
   storeRecipes(recipes: Recipe[]) {
     this.recipes = [];
     this.recipes = recipes;
-    let i = 0;
-    this.recipes.forEach( (recipe) => {
-      recipe.id = i++;
-    });
+    const jsonData = JSON.parse(JSON.stringify(recipes));
+    // const id = jsonData[0]._id;
+    // console.log(jsonData);
+    // console.log(id);
+    for (let i = 0; i < recipes.length; i++) {
+      this.recipes[i].id = jsonData[i]._id;
+    }
+    // console.log(this.recipes[0].id);
+  }
+
+  addRecipe(value: SubmitRecipe) {
+
   }
 }

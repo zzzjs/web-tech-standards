@@ -12,6 +12,7 @@ import {AccountMyRecipesComponent} from './user/account/account-my-recipes/accou
 import {AccountRecipesBoxComponent} from './user/account/account-recipes-box/account-recipes-box.component';
 import {AccountMyProfileComponent} from './user/account/account-my-profile/account-my-profile.component';
 import {SubmitARecipeComponent} from './user/submit-a-recipe/submit-a-recipe.component';
+import {SignupComponent} from './auth/signup/signup.component';
 
 const routes: Routes = [
   // { path: 'recipes', component: RecipesComponent, children: [
@@ -20,6 +21,7 @@ const routes: Routes = [
   //   ] },
   { path: '', component: HomeComponent},
   { path: 'signin', component: SigninComponent},
+  { path: 'signup', component: SignupComponent},
   { path: 'recipes', component: RecipeListComponent},
   { path: 'recipes/:id', component: RecipeDetailComponent},
   { path: 'submit-a-recipe', component: SubmitARecipeComponent},

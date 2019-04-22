@@ -24,6 +24,7 @@ import { AccountMyProfileComponent } from './user/account/account-my-profile/acc
 import {SubmitARecipeComponent} from './user/submit-a-recipe/submit-a-recipe.component';
 import {UserService} from './user/user.service';
 import {NetConnectService} from './shared/net.connect.service';
+import { MyRecipeItemComponent } from './user/account/account-my-recipes/my-recipe-item/my-recipe-item.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {NetConnectService} from './shared/net.connect.service';
     AccountMyRecipesComponent,
     AccountRecipesBoxComponent,
     AccountMyProfileComponent,
-    SubmitARecipeComponent
+    SubmitARecipeComponent,
+    MyRecipeItemComponent,
   ],
   imports: [
     BrowserModule,

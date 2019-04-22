@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RecipeService} from '../../recipes/recipe.service';
+import {NetConnectService} from '../../shared/net.connect.service';
+import {SubmitRecipe} from '../../recipes/models/submit.recipe.model';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-submit-a-recipe',
@@ -12,18 +15,35 @@ export class SubmitARecipeComponent implements OnInit {
   recipeForm: FormGroup;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private recipeServie: RecipeService) { }
+              private recipeServie: RecipeService,
+              private netService: NetConnectService,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   onSubmit() {
-    // this.recipeService.addRecipe(this.recipeForm.value);
-  }
-
-  onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    const ingredients = [];
+    const directions = [];
+    this.recipeForm.value.ingredients.forEach((ingredient) => {
+      ingredients.push(ingredient.name);
+    });
+    this.recipeForm.value.directions.forEach((direction) => {
+      directions.push(direction.name);
+    });
+    const submitRecipe = new SubmitRecipe(
+      this.recipeForm.value.name,
+      this.recipeForm.value.imagePath,
+      this.recipeForm.value.description,
+      ingredients,
+      directions,
+      this.recipeForm.value.prep,
+      this.recipeForm.value.cook,
+      this.recipeForm.value.category,
+      this.userService.getUser().username
+    );
+    this.netService.submitRecipe(submitRecipe);
   }
 
   getControls() {

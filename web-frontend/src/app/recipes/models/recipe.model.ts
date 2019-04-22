@@ -1,7 +1,7 @@
 import {Photo} from './photo.model';
 
 export class Recipe {
-  private _id: number;
+  private _id: string;
   private _title: string;
   private _created: string;
   private _category: string;
@@ -15,7 +15,8 @@ export class Recipe {
   private _totallikes: number;
   private _author: string;
 
-  constructor(title: string, created: string, category: string, photo: Photo, preptime: string, cooktime: string, description: string, ingredients: string[], directions: string[], favorite: string[], totallikes: number, author: string) {
+  constructor(_id: string, title: string, created: string, category: string, photo: Photo, preptime: string, cooktime: string, description: string, ingredients: string[], directions: string[], favorite: string[], totallikes: number, author: string) {
+    this._id = _id;
     this._title = title;
     this._created = created;
     this._category = category;
@@ -30,11 +31,11 @@ export class Recipe {
     this._author = author;
   }
 
-  get id(): number {
+  get id(): string {
     return this._id;
   }
 
-  set id(value: number) {
+  set id(value: string) {
     this._id = value;
   }
 

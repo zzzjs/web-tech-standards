@@ -2,6 +2,7 @@ export class Photo {
   public link: string;
   public contentType: string;
   public name: string;
+  public title: string;
 
   constructor(link: string, contentType: string, name: string) {
     this.link = link;
