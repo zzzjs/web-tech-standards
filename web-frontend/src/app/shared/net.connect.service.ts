@@ -46,9 +46,10 @@ export class NetConnectService {
     console.log(value);
     this.httpClient.put(Service_HostName + '/recipe', value)
       .subscribe((recipe: Recipe) => {
-        console.log('updated:  ' + recipe);
-        this.recipeService.updateRecipe(recipe);
-        this.router.navigate(['../']);
+        console.log('recipeUpdated');
+        console.log(recipe);
+        this.recipeService.updateRecipe(recipe, value.id);
+        this.router.navigate(['/user/my-recipes']);
       }, error1 => {
         console.log(error1);
       });

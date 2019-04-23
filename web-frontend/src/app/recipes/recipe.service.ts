@@ -59,10 +59,15 @@ export class RecipeService {
     }
   }
 
-  updateRecipe(recipe: Recipe) {
+  updateRecipe(recipe: Recipe, recipeId: string) {
+    console.log(recipe);
     for (let i = 0; i < this.recipes.length; i++) {
-      if (this.recipes[i].id === recipe.id) {
+      console.log(this.recipes[i].id + '  ' + recipeId);
+      if (this.recipes[i].id === recipeId) {
+        console.log(this.recipes[i]);
         this.recipes[i] = recipe;
+        this.recipes[i].id = recipeId;
+        console.log(this.recipes[i]);
         break;
       }
     }

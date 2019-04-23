@@ -26,7 +26,7 @@ export class SubmitARecipeComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = params['id'];
-          // this.editMode = params['id'] != null;
+          this.editMode = params['id'] != null;
           this.initForm();
         }
       );
@@ -51,12 +51,12 @@ export class SubmitARecipeComponent implements OnInit {
       this.recipeForm.value.prep,
       this.recipeForm.value.cook,
       this.recipeForm.value.category,
-      this.userService.getUser().username
+      this.recipeServie.getRecipe(this.id + '').author
     );
     if (this.editMode) {
       const data = {
         id: this.id,
-        recipe: this.recipeServie.getRecipe(this.id + ''),
+        recipe: submitRecipe,
         user: this.userService.getUser()
       };
       this.netService.updateRecipe(data);
@@ -126,7 +126,7 @@ export class SubmitARecipeComponent implements OnInit {
       }
       if (recipe['directions']) {
         for (const direction of recipe.directions) {
-          recipeIngredients.push(
+          recipeDirections.push(
             new FormGroup({
               'name': new FormControl(direction, Validators.required),
             })

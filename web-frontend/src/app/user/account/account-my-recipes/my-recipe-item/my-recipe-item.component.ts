@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../../../../recipes/models/recipe.model';
 import {NetConnectService} from '../../../../shared/net.connect.service';
 import {UserService} from '../../../user.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-recipe-item',
@@ -12,7 +13,9 @@ export class MyRecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
   @Input() index: number;
   constructor(private netService: NetConnectService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,5 +27,9 @@ export class MyRecipeItemComponent implements OnInit {
       user: this.userService.getUser()
     };
     this.netService.deleteRecipe(recipe);
+  }
+
+  onEditRecipe() {
+    this.router.navigate(['/user/' + this.recipe.id + '/edit']);
   }
 }
