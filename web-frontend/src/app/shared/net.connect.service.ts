@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RecipeService} from '../recipes/recipe.service';
 import {Recipe} from '../recipes/models/recipe.model';
 import {SubmitRecipe} from '../recipes/models/submit.recipe.model';
@@ -32,8 +32,23 @@ export class NetConnectService {
   submitRecipe(value: SubmitRecipe) {
     console.log(value);
     this.httpClient.post(Service_HostName + '/upload', value)
-      .subscribe((recipes) => {
-        console.log(recipes);
+      .subscribe((recipe: Recipe) => {
+        this.recipeService.addRecipe(recipe);
+        this.userService.addMyRecipe(recipe);
+        console.log('submited: ' + recipe);
+        this.router.navigate(['../']);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
+
+  updateRecipe(value: any) {
+    console.log(value);
+    this.httpClient.put(Service_HostName + '/recipe', value)
+      .subscribe((recipe: Recipe) => {
+        console.log('updated:  ' + recipe);
+        this.recipeService.updateRecipe(recipe);
+        this.router.navigate(['../']);
       }, error1 => {
         console.log(error1);
       });
@@ -66,5 +81,21 @@ export class NetConnectService {
       });
   }
 
+  deleteRecipe(value: any) {
+    console.log('delete - ' + value.id);
+    console.log(value);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      body: value
+    };
+    this.httpClient.delete(Service_HostName + '/recipe', httpOptions)
+      .subscribe((data) => {
+        console.log(data);
+        this.recipeService.removeRecipe(value.id);
+        this.userService.removeMyRecipe(value.id);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
 
 }

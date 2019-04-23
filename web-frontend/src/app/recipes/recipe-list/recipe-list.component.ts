@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Recipe} from '../models/recipe.model';
 import {Subscription} from 'rxjs';
@@ -9,7 +9,7 @@ import {RecipeService} from '../recipe.service';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent implements OnInit {
+export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
   zhejiang: Recipe[] = [];
   jiangsu: Recipe[] = [];
@@ -48,6 +48,10 @@ export class RecipeListComponent implements OnInit {
         default: break;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

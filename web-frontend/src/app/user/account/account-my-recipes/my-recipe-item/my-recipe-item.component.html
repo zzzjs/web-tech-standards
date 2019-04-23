@@ -1,28 +1,38 @@
-<a
-  style="cursor: pointer;margin-top: 20px"
-  routerLink="/recipes/../../{{index}}"
-  routerLinkActive="active"
-  class="list-group-item clearfix">
-  <div class="row" style="padding: 5px">
-    <div class="col-md-5">
-        <span class="pull-left">
-        <img
-          [src]="recipe.photo.link"
-          alt="{{ recipe.title }}"
-          class="img-responsive"
-          style="max-height: 200px;">
-      </span>
-    </div>
-    <div class="col-md-7; center" style="height: 150px;">
-        <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
-        <br>
-        <p class="list-group-item-text">
-          <i
-            class="ion ion-md-heart"
-            style="color: #afa667"></i>
+<div class="row" style="margin-top: 20px">
+  <div class="col-md-8">
+    <a
+      style="cursor: pointer"
+      routerLink="/recipes/../../{{index}}"
+      routerLinkActive="active"
+      class="list-group-item clearfix">
+      <div class="row" style="padding: 5px">
+        <div class="col-md-7">
+          <span class="pull-left">
+          <img
+            [src]="recipe.photo.link"
+            alt="{{ recipe.title }}"
+            class="img-responsive"
+            style="height: 220px;">
+          </span>
+        </div>
+        <div class="col-md-5; center" style="height: 220px">
+          <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
+          <br>
+          <p class="list-group-item-text">
+            <i
+              class="ion ion-md-heart"
+              style="color: #afa667"></i>
             {{'&#8194;'}}
             {{ recipe.totallikes}}
-        </p>
-    </div>
+          </p>
+        </div>
+      </div>
+    </a>
   </div>
-</a>
+  <div class="col-md-4" style="height: 220px; padding: 95px 0 0 80px">
+    <button
+      type="button"
+      class="btn"
+      (click)="onDeleteRecipe()">DELETE</button>
+  </div>
+</div>

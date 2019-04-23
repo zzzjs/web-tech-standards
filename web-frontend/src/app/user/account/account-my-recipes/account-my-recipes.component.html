@@ -1,8 +1,8 @@
-<p *ngIf="recipes.length == 0">You do not have any Approved or Submitted Recipes.</p>
+<p *ngIf="myRecipes.length == 0">You do not have any Approved or Submitted Recipes.</p>
 <div class="row">
   <div class="col-xs-12">
     <app-my-recipe-item
-      *ngFor="let recipeEl of recipes; let i = index"
+      *ngFor="let recipeEl of myRecipes; let i = index"
       [recipe]="recipeEl"
       [index]="recipeEl.id"></app-my-recipe-item>
   </div>

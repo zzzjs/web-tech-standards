@@ -6,8 +6,44 @@ img {
   width: 80%;
 }
 .center {
-  padding: 40px 0;
+  padding: 50px 0;
 }
 h4,p {
   font-size: 150%;
+}
+.btn {
+  background-color: #afa691;
+  border: 1px solid #afa691;
+  width: 130px;
+  height: 45px;
+  color: white;
+  font-size: 130%;
+  word-spacing: 4px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.btn:focus {outline: none}
+
+.btn:link,
+.btn:visited,
+input[type=submit]{
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+  background-color: #afa667;
+}
+.h4:focus {outline: none}
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
 }

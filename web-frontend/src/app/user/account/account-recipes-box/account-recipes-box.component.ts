@@ -20,16 +20,12 @@ export class AccountRecipesBoxComponent implements OnInit {
               private netService: NetConnectService) { }
 
   ngOnInit() {
+    this.getMyFavorites();
+  }
+
+  getMyFavorites() {
+    this.favoritePhotos = [];
     this.favorites = this.userService.getFavorites();
-    // this.favorites.forEach((favorite) => {
-    //   this.netService.getRecipeById(favorite.recipeid)
-    //     .subscribe((recipe: Recipe) => {
-    //       recipe.photo.title = recipe.title;
-    //       this.favoritePhotos.push(recipe.photo);
-    //     }, error1 => {
-    //       console.log(error1);
-    //     });
-    // });
     this.favorites.forEach( (favorite) => {
       const temp = this.recipeService.getRecipe(favorite.recipeid);
       temp.photo.title = temp.title;

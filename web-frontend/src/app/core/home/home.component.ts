@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     this.netConnectService.getRecipes();
   }
 
+
   onNewRecipe() {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/submit-a-recipe']);

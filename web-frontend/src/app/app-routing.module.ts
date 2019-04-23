@@ -15,7 +15,7 @@ import {SubmitARecipeComponent} from './user/submit-a-recipe/submit-a-recipe.com
 import {SignupComponent} from './auth/signup/signup.component';
 
 const routes: Routes = [
-  // { path: 'recipes', component: RecipesComponent, children: [
+  // { path: 'myRecipes', component: RecipesComponent, children: [
   //     { path: '', component: RecipeStartComponent },
   //     { path: ':id', component: RecipeDetailComponent }
   //   ] },
@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'submit-a-recipe', component: SubmitARecipeComponent},
   { path: 'user', component: AccountComponent, children: [
       {path: '', component: AccountStartComponent},
+      // { path: ':id/edit', component: SubmitARecipeComponent},
       {path: 'my-recipes', component: AccountMyRecipesComponent},
       {path: 'recipes-box', component: AccountRecipesBoxComponent},
       {path: 'my-profile', component: AccountMyProfileComponent},

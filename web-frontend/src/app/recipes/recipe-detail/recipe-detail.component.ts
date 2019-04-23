@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Recipe} from '../models/recipe.model';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
@@ -13,7 +13,7 @@ import {User} from '../../user/models/user.model';
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css']
 })
-export class RecipeDetailComponent implements OnInit {
+export class RecipeDetailComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   id: number;
   cookTime = '';
@@ -65,12 +65,14 @@ export class RecipeDetailComponent implements OnInit {
       user: this.userService.getUser()
     };
     if (this.favorite === 'Like') {
-      console.log('like add');
       this.netService.addFavorite(favorite);
     } else {
-      console.log('unLike remove');
       this.netService.removeFavorite(favorite);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

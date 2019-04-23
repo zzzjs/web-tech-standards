@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RecipeService} from '../../recipes/recipe.service';
 import {NetConnectService} from '../../shared/net.connect.service';
@@ -13,14 +13,24 @@ import {UserService} from '../user.service';
 })
 export class SubmitARecipeComponent implements OnInit {
   recipeForm: FormGroup;
-
-  constructor(private router: Router, private route: ActivatedRoute,
+  editMode = false;
+  private id: number;
+  constructor(private router: Router,
+              private route: ActivatedRoute,
               private recipeServie: RecipeService,
               private netService: NetConnectService,
               private userService: UserService) { }
 
   ngOnInit() {
-    this.initForm();
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = params['id'];
+          // this.editMode = params['id'] != null;
+          this.initForm();
+        }
+      );
+    // this.initForm();
   }
 
   onSubmit() {
@@ -43,7 +53,16 @@ export class SubmitARecipeComponent implements OnInit {
       this.recipeForm.value.category,
       this.userService.getUser().username
     );
-    this.netService.submitRecipe(submitRecipe);
+    if (this.editMode) {
+      const data = {
+        id: this.id,
+        recipe: this.recipeServie.getRecipe(this.id + ''),
+        user: this.userService.getUser()
+      };
+      this.netService.updateRecipe(data);
+    } else {
+      this.netService.submitRecipe(submitRecipe);
+    }
   }
 
   getControls() {
@@ -79,14 +98,42 @@ export class SubmitARecipeComponent implements OnInit {
   }
 
   private initForm() {
-    const recipeName = '';
-    const recipeImagePath = '';
-    const recipeDescription = '';
-    const recipeIngredients = new FormArray([]);
-    const recipeDirections = new FormArray([]);
-    const preptime = '';
-    const cooktime = '';
-    const category = '';
+    let recipeName = '';
+    let recipeImagePath = '';
+    let recipeDescription = '';
+    let recipeIngredients = new FormArray([]);
+    let recipeDirections = new FormArray([]);
+    let preptime = '';
+    let cooktime = '';
+    let category = '';
+
+    if (this.editMode) {
+      const recipe = this.recipeServie.getRecipe(this.id + '');
+      recipeName = recipe.title;
+      recipeImagePath = recipe.photo.link;
+      recipeDescription = recipe.description;
+      preptime = recipe.preptime;
+      cooktime = recipe.cooktime;
+      category = recipe.category;
+      if (recipe['ingredients']) {
+        for (const ingredient of recipe.ingredients) {
+          recipeIngredients.push(
+            new FormGroup({
+              'name': new FormControl(ingredient, Validators.required),
+            })
+          );
+        }
+      }
+      if (recipe['directions']) {
+        for (const direction of recipe.directions) {
+          recipeIngredients.push(
+            new FormGroup({
+              'name': new FormControl(direction, Validators.required),
+            })
+          );
+        }
+      }
+    }
 
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),
