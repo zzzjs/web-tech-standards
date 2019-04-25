@@ -23,6 +23,12 @@ export class AdminService {
     for (let i = 0; i < users.length; i++) {
       this.users[i].id = jsonData[i]._id;
     }
+    for (let i = 0; i < users.length; i++) {
+      if (this.users[i].isAdmin) {
+        this.users.splice(i, 1);
+        break;
+      }
+    }
     this.usersChanged.next(this.users.slice());
   }
 

@@ -3,6 +3,7 @@ import {Recipe} from '../../../../recipes/models/recipe.model';
 import {NetConnectService} from '../../../../shared/net.connect.service';
 import {UserService} from '../../../../user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {RecipeService} from '../../../../recipes/recipe.service';
 
 @Component({
   selector: 'app-all-reipe-item',
@@ -15,6 +16,7 @@ export class AllReipeItemComponent implements OnInit {
   @Input() index: number;
   constructor(private netService: NetConnectService,
               private userService: UserService,
+              private recipeService: RecipeService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -25,7 +27,7 @@ export class AllReipeItemComponent implements OnInit {
     const recipe = {
       id: this.recipe.id,
       title: this.recipe.title,
-      user: this.userService.getUser()
+      user: this.recipe.author
     };
     this.netService.deleteRecipe(recipe);
   }
