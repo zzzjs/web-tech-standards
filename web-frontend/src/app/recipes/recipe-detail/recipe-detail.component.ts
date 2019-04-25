@@ -49,7 +49,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   checkStatus () {
     if (!this.authService.isAuthenticated()) {
       this.Auth = false;
-    } else if (this.userService.getFavorite(this.recipe.id)) {
+    } else if (!this.authService.isAdmin() && this.userService.getFavorite(this.recipe.id)) {
       this.Auth = true;
       this.favorite = 'unLike';
     } else {
@@ -59,6 +59,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   changeFavorite() {
+    if (this.authService.isAdmin()) {return;}
     const favorite = {
       id: this.recipe.id,
       title: this.recipe.title,

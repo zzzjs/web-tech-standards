@@ -5,11 +5,17 @@ import {Recipe} from './models/recipe.model';
 @Injectable()
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
+  searchResult = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [];
+  private searchRecipes: Recipe[] = [];
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getSearchRecipes() {
+    return this.searchRecipes.slice();
   }
 
   getRecipe(index: string) {
@@ -27,6 +33,7 @@ export class RecipeService {
     for (let i = 0; i < recipes.length; i++) {
       this.recipes[i].id = jsonData[i]._id;
     }
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   addRecipe(recipe: Recipe) {
@@ -72,5 +79,15 @@ export class RecipeService {
       }
     }
     this.recipesChanged.next(this.recipes.slice());
+  }
+
+  storeSearchResult(recipes: Recipe[]) {
+    this.searchRecipes = [];
+    this.searchRecipes = recipes;
+    const jsonData = JSON.parse(JSON.stringify(recipes));
+    for (let i = 0; i < recipes.length; i++) {
+      this.searchRecipes[i].id = jsonData[i]._id;
+    }
+    this.searchResult.next(this.searchRecipes.slice());
   }
 }

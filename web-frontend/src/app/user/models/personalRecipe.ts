@@ -1,4 +1,4 @@
-export class PersonalRecipes {
+export class PersonalRecipe {
   public recipeid: string;
   public title: string;
 

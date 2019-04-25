@@ -42,6 +42,9 @@ export class SubmitARecipeComponent implements OnInit {
     this.recipeForm.value.directions.forEach((direction) => {
       directions.push(direction.name);
     });
+    const author = this.editMode ?
+      this.recipeServie.getRecipe(this.id + '').author :
+      this.userService.getUser().username;
     const submitRecipe = new SubmitRecipe(
       this.recipeForm.value.name,
       this.recipeForm.value.imagePath,
@@ -51,7 +54,7 @@ export class SubmitARecipeComponent implements OnInit {
       this.recipeForm.value.prep,
       this.recipeForm.value.cook,
       this.recipeForm.value.category,
-      this.recipeServie.getRecipe(this.id + '').author
+      author
     );
     if (this.editMode) {
       const data = {

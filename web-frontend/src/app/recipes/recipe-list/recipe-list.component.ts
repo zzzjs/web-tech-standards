@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Recipe} from '../models/recipe.model';
 import {Subscription} from 'rxjs';
 import {RecipeService} from '../recipe.service';
+import {NetConnectService} from '../../shared/net.connect.service';
 
 @Component({
   selector: 'app-recipe-list',

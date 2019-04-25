@@ -6,12 +6,17 @@ import {SubmitRecipe} from '../recipes/models/submit.recipe.model';
 import {Service_HostName} from './constants';
 import {Router} from '@angular/router';
 import {UserService} from '../user/user.service';
+import {AdminService} from './services/admin.service';
+import {User} from '../user/models/user.model';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class NetConnectService {
   constructor(private httpClient: HttpClient,
               private recipeService: RecipeService,
               private userService: UserService,
+              private adminService: AdminService,
+              private authService: AuthService,
               private router: Router) {}
 
   getRecipes() {
@@ -49,7 +54,11 @@ export class NetConnectService {
         console.log('recipeUpdated');
         console.log(recipe);
         this.recipeService.updateRecipe(recipe, value.id);
-        this.router.navigate(['/user/my-recipes']);
+        if (this.authService.isAdmin()) {
+          this.router.navigate(['/admin/recipes']);
+        } else {
+          this.router.navigate(['/user/my-recipes']);
+        }
       }, error1 => {
         console.log(error1);
       });
@@ -90,6 +99,45 @@ export class NetConnectService {
       body: value
     };
     this.httpClient.delete(Service_HostName + '/recipe', httpOptions)
+      .subscribe((data) => {
+        console.log(data);
+        this.recipeService.removeRecipe(value.id);
+        this.userService.removeMyRecipe(value.id);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
+
+  searchRecipes(keywords: string) {
+    console.log('search keyword: ' + keywords);
+    this.httpClient.get(Service_HostName + '/search?search=' + keywords)
+      .subscribe((recipes: Recipe[]) => {
+        this.recipeService.storeSearchResult(recipes);
+        this.router.navigate(['/search/' + keywords]);
+        console.log(recipes);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
+
+  getUsers() {
+    this.httpClient.get(Service_HostName + '/users')
+      .subscribe((users: User[]) => {
+        this.adminService.storeUsers(users);
+        console.log(users);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
+
+  deleteUser(value: any) {
+    console.log('delete - ' + value.id);
+    console.log(value);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      body: value
+    };
+    this.httpClient.delete(Service_HostName + '/user', httpOptions)
       .subscribe((data) => {
         console.log(data);
         this.recipeService.removeRecipe(value.id);

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="center" style="width: 900px;padding-left: 100px">
+    <form (ngSubmit)="onSearch(f)" #f="ngForm">
+      <label for="keywords"></label>
+      <div class="row">
+        <div class="col-md-7">
+          <input
+            type="text"
+            id="keywords"
+            name="keywords"
+            placeholder="Search.."
+            ngModel class="form-control"
+            [required]="true">
+        </div>
+        <div class="col-md-5">
+          <button
+            class="btn"
+            type="submit"
+            [disabled]="!f.valid">
+            SEARCH
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<router-outlet></router-outlet>

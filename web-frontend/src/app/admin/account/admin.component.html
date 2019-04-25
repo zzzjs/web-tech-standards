@@ -1,0 +1,30 @@
+<div class="container" style="margin: 50px">
+  <div class="row">
+    <div class="col-md-2">
+      <img src="https://modern-ruby.glitch.me/uploads/photo-1555809699217.jpg" alt="Avatar">
+    </div>
+    <div class="col-md-10">
+      <h1>Hello</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Manage all the recipes and users here!</p>
+        </div>
+        <div class="col-md-6">
+          <p>{{admin.username}}</p>
+          <a style="color: #b0a692; font-size: 100%" routerLink="/admin">EDIT MY ACCOUNT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <a routerLink="recipes">ALL RECIPES</a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="users">ALL USERS</a>
+    </div>
+  </div>
+  <br>
+  <router-outlet></router-outlet>
+</div>

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../user.service';
-import {PersonalRecipes} from '../../models/personalRecipes';
+import {PersonalRecipe} from '../../models/personalRecipe';
 import {NetConnectService} from '../../../shared/net.connect.service';
 import {Recipe} from '../../../recipes/models/recipe.model';
 import {RecipeService} from '../../../recipes/recipe.service';
@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./account-my-recipes.component.css']
 })
 export class AccountMyRecipesComponent implements OnInit, OnDestroy {
-  personalRecipes: PersonalRecipes[];
+  personalRecipes: PersonalRecipe[];
   myRecipes: Recipe[] = [];
   subscription: Subscription;
   constructor(private router: Router,

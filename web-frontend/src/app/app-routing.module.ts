@@ -11,6 +11,14 @@ import {AccountRecipesBoxComponent} from './user/account/account-recipes-box/acc
 import {AccountMyProfileComponent} from './user/account/account-my-profile/account-my-profile.component';
 import {SubmitARecipeComponent} from './user/submit-a-recipe/submit-a-recipe.component';
 import {SignupComponent} from './auth/signup/signup.component';
+import {SearchComponent} from './search/search.component';
+import {AboutusComponent} from './aboutus/aboutus.component';
+import {SearchResultComponent} from './search/search-result/search-result.component';
+import {SearchResultStartComponent} from './search/search-result/search-result-start/search-result-start.component';
+import {AccountAdminProfileComponent} from './admin/account/account-admin-profile/account-admin-profile.component';
+import {AccountAllRecipesComponent} from './admin/account/account-all-recipes/account-all-recipes.component';
+import {AccountAllUsersComponent} from './admin/account/account-all-users/account-all-users.component';
+import {AdminComponent} from './admin/account/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -19,6 +27,11 @@ const routes: Routes = [
   { path: 'recipes', component: RecipeListComponent},
   { path: 'recipes/:id', component: RecipeDetailComponent},
   { path: 'submit-a-recipe', component: SubmitARecipeComponent},
+  { path: 'search', component: SearchComponent, children: [
+      {path: '', component: SearchResultStartComponent},
+      {path: ':id', component: SearchResultComponent}
+    ]},
+  { path: 'about-us', component: AboutusComponent},
   { path: 'user', component: AccountComponent, children: [
       {path: '', component: AccountStartComponent},
       { path: ':id/edit', component: SubmitARecipeComponent},
@@ -26,6 +39,12 @@ const routes: Routes = [
       {path: 'recipes-box', component: AccountRecipesBoxComponent},
       {path: 'my-profile', component: AccountMyProfileComponent},
     ]},
+  { path: 'admin', component: AdminComponent, children: [
+      { path: '', component: AccountAdminProfileComponent},
+      { path: 'recipes', component: AccountAllRecipesComponent},
+      { path: 'users', component: AccountAllUsersComponent},
+      { path: ':id/edit', component: SubmitARecipeComponent},
+    ]}
 ];
 
 @NgModule({

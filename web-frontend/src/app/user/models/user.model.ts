@@ -1,21 +1,31 @@
 import {Favorite} from './favorite.model';
-import {PersonalRecipes} from './personalRecipes';
+import {PersonalRecipe} from './personalRecipe';
 
 export class User {
+  private _id: string;
   private _username: string;
   private _password: string;
   private _created: string;
+  private _isAdmin = false;
   private _favorite: Favorite[];
-  private _PersonalRecipes: PersonalRecipes[];
+  private _PersonalRecipes: PersonalRecipe[];
 
-  constructor(username: string, password: string, created: string, favorite: Favorite[], PersonalRecipes: PersonalRecipes[]) {
+  constructor(username: string, password: string, created: string, isAdmin: boolean, favorite: Favorite[], PersonalRecipes: PersonalRecipe[]) {
     this._username = username;
     this._password = password;
     this._created = created;
+    this._isAdmin = isAdmin;
     this._favorite = favorite;
     this._PersonalRecipes = PersonalRecipes;
   }
 
+  get id(): string {
+    return this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
+  }
 
   get username(): string {
     return this._username;
@@ -49,11 +59,19 @@ export class User {
     this._favorite = value;
   }
 
-  get PersonalRecipes(): PersonalRecipes[] {
+  get PersonalRecipes(): PersonalRecipe[] {
     return this._PersonalRecipes;
   }
 
-  set PersonalRecipes(value: PersonalRecipes[]) {
+  set PersonalRecipes(value: PersonalRecipe[]) {
     this._PersonalRecipes = value;
+  }
+
+  get isAdmin(): boolean {
+    return this._isAdmin;
+  }
+
+  set isAdmin(value: boolean) {
+    this._isAdmin = value;
   }
 }

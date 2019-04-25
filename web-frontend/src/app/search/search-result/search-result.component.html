@@ -1,0 +1,18 @@
+<hr>
+<p>There are {{searchResult.length}} results for the item "{{keywords}}"</p>
+<div class="section-meals">
+  <ul class="meals-showcase clearfix">
+    <li
+      class="clearfix"
+      *ngFor="let fp of searchResult; let i = index">
+      <figure class="meal-photo" style="position: relative">
+        <img
+          [src]="fp.photo.link"
+          alt=""
+          routerLink="/recipes/../../{{fp.id}}"
+          routerLinkActive="active">
+        <span style="position: absolute; bottom: 50%; left: 20%; color: white; font-size: 150%">{{fp.title}}</span>
+      </figure>
+    </li>
+  </ul>
+</div>

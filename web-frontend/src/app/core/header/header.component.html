@@ -8,8 +8,8 @@
     <ul class="nav navbar-nav" style="padding-left: 100px">
       <li><a routerLink="/">HOME</a></li>
       <li><a routerLink="/recipes">RECIPES</a></li>
-      <li><a routerLink="/">SEARCH</a></li>
-      <li><a routerLink="/">ABOUT US</a></li>
+      <li><a routerLink="/search">SEARCH</a></li>
+      <li><a routerLink="/about-us">ABOUT US</a></li>
       <li routerLinkActive="active" *ngIf="false"><a routerLink="/history">History Reimder</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="padding-right: 100px">
@@ -17,7 +17,7 @@
         <li style="margin-right: 20px"><a routerLink="/signin">LOGIN/SIGN UP</a></li>
       </ng-template>
       <ng-template [ngIf]="isAuth()">
-        <li><a routerLink="/user">MY ACCOUNT</a></li>
+        <li><a style="cursor: pointer" (click)="onAccount()">MY ACCOUNT</a></li>
         <li><a style="cursor: pointer" (click)="onLogout()">SIGN OUT</a></li>
       </ng-template>
     </ul>

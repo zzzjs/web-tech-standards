@@ -3,6 +3,7 @@ import {AuthService} from '../../auth/auth.service';
 import {UserService} from '../../user/user.service';
 import {Subscription} from 'rxjs';
 import {User} from '../../user/models/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private authService: AuthService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.userService.userChanged
@@ -33,5 +35,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onAccount() {
+    if (this.authService.isAdmin()) {
+      this.router.navigate(['/admin']);
+    } else {
+      this.router.navigate(['/user']);
+    }
   }
 }

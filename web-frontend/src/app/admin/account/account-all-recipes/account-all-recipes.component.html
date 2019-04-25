@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="center">
+    <div class="col-md-7" style="margin-top: 7px">
+      <select
+        [(ngModel)]="selectedOption">
+        <option value="" selected disabled>Please select</option>
+        <option *ngFor="let user of users">
+          {{user.username}}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-5">
+      <button
+        type="button"
+        class="btn"
+        style="margin: 0 0 0 20px"
+        (click)="checkUserRecipes()">Click me</button>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-all-reipe-item
+      *ngFor="let recipeEl of recipes; let i = index"
+      [recipe]="recipeEl"
+      [index]="recipeEl.id"></app-all-reipe-item>
+  </div>
+</div>
