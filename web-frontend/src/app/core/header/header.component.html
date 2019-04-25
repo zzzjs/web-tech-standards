@@ -13,10 +13,10 @@
       <li routerLinkActive="active" *ngIf="false"><a routerLink="/history">History Reimder</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right" style="padding-right: 100px">
-      <ng-template [ngIf]="!authService.isAuthenticated()">
+      <ng-template [ngIf]="!isAuth()">
         <li style="margin-right: 20px"><a routerLink="/signin">LOGIN/SIGN UP</a></li>
       </ng-template>
-      <ng-template [ngIf]="authService.isAuthenticated()">
+      <ng-template [ngIf]="isAuth()">
         <li><a routerLink="/user">MY ACCOUNT</a></li>
         <li><a style="cursor: pointer" (click)="onLogout()">SIGN OUT</a></li>
       </ng-template>
