@@ -1,5 +1,5 @@
 # web-tech-standards
-This web-front app is created by using Angular2.
+This web-front app is created by using Angular2 for INFSCI 2560 Web Technologies and Standards(Spring 2019).
 ## How to use it
  1. Import the project to WebStorm / Vscode
  2. In the terminal, input 'npm install' to install all dependencies
