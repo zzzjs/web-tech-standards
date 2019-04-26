@@ -30,13 +30,13 @@ export class SigninComponent implements OnInit {
             console.log(user);
             this.adminService.storeAdmin(user);
             this.router.navigate(['/admin']);
-            this.authService.admin = true;
+            this.authService.setAdmin(true);
           } else {
             this.userService.storeUser(user);
             this.router.navigate(['/user']);
-            this.authService.admin = false;
+            this.authService.setAdmin(false);
           }
-          this.authService.token = '1024';
+          this.authService.setToken('1024');
         }, error1 => {
           console.log(error1);
         });

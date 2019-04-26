@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {UserAccountModel} from './user.account.model';
 import {Service_HostName} from '../shared/constants';
+import {LocalStorageService} from '../shared/local.storage.service';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +12,8 @@ export class AuthService {
   admin = false;
 
   constructor(private router: Router,
-              private httpClient: HttpClient) {}
+              private httpClient: HttpClient,
+              private localStorageService: LocalStorageService) {}
 
   signinUser(username: string, password: string) {
     this.userAccount = new UserAccountModel(username, password);
@@ -28,10 +30,27 @@ export class AuthService {
   logout() {
     this.router.navigate(['/signin']);
     this.token = null;
+    this.localStorageService.removeToken();
+    this.localStorageService.removeUser();
+    this.localStorageService.removeAdmin();
+    this.localStorageService.removeIsAdmin();
+    // this.localStorageService.removeRecipes();
+  }
+
+  setToken(token: string) {
+    if (token == null) { return; }
+    this.token = token;
+    this.localStorageService.storeToken(this.token);
   }
 
   isAuthenticated() {
     return this.token != null;
+  }
+
+  setAdmin(admin: boolean) {
+    if (admin == null) { return; }
+    this.admin = admin;
+    this.localStorageService.storeIsAdmin(this.admin);
   }
 
   isAdmin() {

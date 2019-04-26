@@ -47,6 +47,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   checkStatus () {
+    console.log('isAdmin => ' + this.authService.isAdmin());
     if (!this.authService.isAuthenticated()) {
       this.Auth = false;
     } else if (!this.authService.isAdmin() && this.userService.getFavorite(this.recipe.id)) {

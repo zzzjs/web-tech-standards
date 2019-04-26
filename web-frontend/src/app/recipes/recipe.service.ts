@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {Recipe} from './models/recipe.model';
+import {LocalStorageService} from '../shared/local.storage.service';
 
 @Injectable()
 export class RecipeService {
@@ -9,6 +10,8 @@ export class RecipeService {
 
   private recipes: Recipe[] = [];
   private searchRecipes: Recipe[] = [];
+
+  constructor(private localStorageService: LocalStorageService) {}
 
   getRecipes() {
     return this.recipes.slice();
@@ -27,6 +30,8 @@ export class RecipeService {
   }
 
   storeRecipes(recipes: Recipe[]) {
+    console.log('store recipes');
+    if (recipes == null) { return; }
     this.recipes = [];
     this.recipes = recipes;
     const jsonData = JSON.parse(JSON.stringify(recipes));
@@ -34,6 +39,7 @@ export class RecipeService {
       this.recipes[i].id = jsonData[i]._id;
     }
     this.recipesChanged.next(this.recipes.slice());
+    this.localStorageService.storeRecipes(this.recipes.slice());
   }
 
   addRecipe(recipe: Recipe) {

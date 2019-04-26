@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {User} from '../../user/models/user.model';
+import {LocalStorageService} from '../local.storage.service';
 
 @Injectable()
 export class AdminService {
@@ -9,15 +10,18 @@ export class AdminService {
   private admin: User;
   private users: User[] = [];
 
+  constructor(private localStorageService: LocalStorageService) {}
   getAdmin() {
     return this.admin;
   }
 
   storeAdmin(admin: User) {
+    if (admin == null) { return; }
     const jsonData = JSON.parse(JSON.stringify(admin));
     this.admin = admin;
     this.admin.id = jsonData._id;
     this.adminChanged.next(this.admin);
+    this.localStorageService.storeAdmin(this.admin);
   }
 
   storeUsers(users: User[]) {

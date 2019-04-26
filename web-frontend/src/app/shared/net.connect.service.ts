@@ -22,8 +22,8 @@ export class NetConnectService {
   getRecipes() {
     this.httpClient.get('https://modern-ruby.glitch.me/recipes')
       .subscribe((recipes: Recipe[]) => {
-        this.recipeService.storeRecipes(recipes);
         console.log('received ' + recipes.length);
+        this.recipeService.storeRecipes(recipes);
       }, error1 => {
         console.log(error1);
       });

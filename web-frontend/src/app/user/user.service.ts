@@ -2,17 +2,22 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {User} from './models/user.model';
 import {Recipe} from '../recipes/models/recipe.model';
+import {LocalStorageService} from '../shared/local.storage.service';
 
 @Injectable()
 export class UserService {
   userChanged = new Subject<User>();
   private user: User;
 
+  constructor(private localStorageService: LocalStorageService) {}
+
   storeUser(user: User) {
+    if (user == null) { return; }
     const jsonData = JSON.parse(JSON.stringify(user));
     this.user = user;
     this.user.id = jsonData._id;
     this.userChanged.next(this.user);
+    this.localStorageService.storeUser(this.user);
   }
 
   getUser() {
@@ -29,6 +34,8 @@ export class UserService {
 
   getFavorite(recipeId: string) {
     let temp = false;
+    console.log('getFavorite');
+    console.log(this.user);
     this.user.favorite.forEach((fa) => {
       if (fa.recipeid === recipeId) { temp = true; }
     });

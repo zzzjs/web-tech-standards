@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
       .subscribe((user: User) => {
         console.log(user);
         this.userService.storeUser(user);
-        this.authService.token = '1024';
+        this.authService.setToken('1024');
         this.invalid = '';
         this.router.navigate(['/user']);
       }, error1 => {

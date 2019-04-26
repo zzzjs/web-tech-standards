@@ -38,6 +38,7 @@ import {AdminService} from './shared/services/admin.service';
 import { AllUserItemComponent } from './admin/account/account-all-users/all-user-item/all-user-item.component';
 import { AccountEditComponent } from './user/account/account-edit/account-edit.component';
 import { AccountAdminEditComponent } from './admin/account/account-admin-edit/account-admin-edit.component';
+import {LocalStorageService} from './shared/local.storage.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,14 @@ import { AccountAdminEditComponent } from './admin/account/account-admin-edit/ac
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, RecipeService, UserService, NetConnectService, AdminService],
+  providers: [
+    AuthService,
+    RecipeService,
+    UserService,
+    NetConnectService,
+    AdminService,
+    LocalStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
