@@ -19,6 +19,8 @@ import {AccountAdminProfileComponent} from './admin/account/account-admin-profil
 import {AccountAllRecipesComponent} from './admin/account/account-all-recipes/account-all-recipes.component';
 import {AccountAllUsersComponent} from './admin/account/account-all-users/account-all-users.component';
 import {AdminComponent} from './admin/account/admin.component';
+import {AccountEditComponent} from './user/account/account-edit/account-edit.component';
+import {AccountAdminEditComponent} from './admin/account/account-admin-edit/account-admin-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -38,12 +40,14 @@ const routes: Routes = [
       {path: 'my-recipes', component: AccountMyRecipesComponent},
       {path: 'recipes-box', component: AccountRecipesBoxComponent},
       {path: 'my-profile', component: AccountMyProfileComponent},
+      {path: 'edit-account', component: AccountEditComponent},
     ]},
   { path: 'admin', component: AdminComponent, children: [
       { path: '', component: AccountAdminProfileComponent},
       { path: 'recipes', component: AccountAllRecipesComponent},
       { path: 'users', component: AccountAllUsersComponent},
       { path: ':id/edit', component: SubmitARecipeComponent},
+      { path: 'edit-account', component: AccountAdminEditComponent},
     ]}
 ];
 

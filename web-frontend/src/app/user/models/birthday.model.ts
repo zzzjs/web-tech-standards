@@ -1,7 +1,7 @@
 export class Birthday {
-  private month: string;
-  private day: string;
-  private year: string;
+  public month: string;
+  public day: string;
+  public year: string;
 
   constructor(month: string, day: string, year: string) {
     this.month = month;

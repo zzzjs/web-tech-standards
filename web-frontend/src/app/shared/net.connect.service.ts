@@ -143,10 +143,26 @@ export class NetConnectService {
       body: value
     };
     this.httpClient.delete(Service_HostName + '/user', httpOptions)
-      .subscribe((data) => {
-        console.log(data);
-        this.recipeService.removeRecipe(value.id);
-        this.userService.removeMyRecipe(value.id);
+      .subscribe((user: User) => {
+        console.log(user);
+        this.adminService.deleteUser(value);
+      }, error1 => {
+        console.log(error1);
+      });
+  }
+
+  updateAccount(data: any) {
+    console.log(data);
+    this.httpClient.put(Service_HostName + '/user', data)
+      .subscribe((user: User) => {
+        console.log(user);
+        if (this.authService.isAdmin()) {
+          this.adminService.storeAdmin(user);
+          this.router.navigate(['/admin']);
+        } else {
+          this.userService.storeUser(user);
+          this.router.navigate(['/user']);
+        }
       }, error1 => {
         console.log(error1);
       });

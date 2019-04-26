@@ -27,6 +27,7 @@ export class SigninComponent implements OnInit {
         .subscribe((user: User) => {
           console.log(user);
           if (user.isAdmin) {
+            console.log(user);
             this.adminService.storeAdmin(user);
             this.router.navigate(['/admin']);
             this.authService.admin = true;

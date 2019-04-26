@@ -18,5 +18,6 @@ export class AllUserItemComponent implements OnInit {
 
   onDelete() {
     console.log(this.user.id);
+    this.netService.deleteUser(this.user);
   }
 }

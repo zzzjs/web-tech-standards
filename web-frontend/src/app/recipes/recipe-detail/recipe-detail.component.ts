@@ -59,7 +59,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   changeFavorite() {
-    if (this.authService.isAdmin()) {return;}
+    if (this.authService.isAdmin()) {return; }
     const favorite = {
       id: this.recipe.id,
       title: this.recipe.title,

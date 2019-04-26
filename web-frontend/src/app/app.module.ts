@@ -36,6 +36,8 @@ import { AdminComponent } from './admin/account/admin.component';
 import { AllReipeItemComponent } from './admin/account/account-all-recipes/all-reipe-item/all-reipe-item.component';
 import {AdminService} from './shared/services/admin.service';
 import { AllUserItemComponent } from './admin/account/account-all-users/all-user-item/all-user-item.component';
+import { AccountEditComponent } from './user/account/account-edit/account-edit.component';
+import { AccountAdminEditComponent } from './admin/account/account-admin-edit/account-admin-edit.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { AllUserItemComponent } from './admin/account/account-all-users/all-user
     AccountAdminProfileComponent,
     AllReipeItemComponent,
     AllUserItemComponent,
+    AccountEditComponent,
+    AccountAdminEditComponent,
   ],
   imports: [
     BrowserModule,

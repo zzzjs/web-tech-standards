@@ -9,7 +9,10 @@ export class UserService {
   private user: User;
 
   storeUser(user: User) {
+    const jsonData = JSON.parse(JSON.stringify(user));
     this.user = user;
+    this.user.id = jsonData._id;
+    this.userChanged.next(this.user);
   }
 
   getUser() {

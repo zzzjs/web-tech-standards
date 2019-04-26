@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row" style="margin: 10px 0 50px 0">
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>GENDER:</label>
+            <label class="form-check-inline" style="padding: 0 10px 0 10px">
+              <label for="male" style="padding-right: 5px">Male</label>
+              <input id ="male" class="form-check-input" type="radio" name="mode" value="male" [(ngModel)]="gender">
+            </label>
+            <label class="form-check-inline">
+              <label for="female" style="padding-right: 5px">Female</label>
+              <input id="female" class="form-check-input" type="radio" name="mode" value="female" [(ngModel)]="gender">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="month">MONTH</label>
+            <input
+              type="text"
+              id="month"
+              [(ngModel)]="month"
+              class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="day">DAY</label>
+            <input
+              type="text"
+              id="day"
+              [(ngModel)]="day"
+              class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-group">
+            <label for="year">YEAR</label>
+            <input
+              type="text"
+              id="year"
+              [(ngModel)]="year"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="city">CITY</label>
+              <input
+                type="text"
+                id="city"
+                [(ngModel)]="city"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="state">STATE</label>
+              <input
+                type="text"
+                id="state"
+                [(ngModel)]="state"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="zip">ZIP CODE</label>
+              <input
+                type="text"
+                id="zip"
+                [(ngModel)]="zip"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button
+              type="button"
+              class="btn"
+              (click)="onSubmit()">SUBMIT ACCOUNT</button>
+            <!--<button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>-->
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
