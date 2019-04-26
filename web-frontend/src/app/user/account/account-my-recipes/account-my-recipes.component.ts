@@ -27,6 +27,7 @@ export class AccountMyRecipesComponent implements OnInit, OnDestroy {
         this.getMyRecipes();
       });
     this.getMyRecipes();
+    console.log(this.personalRecipes);
   }
 
   getMyRecipes() {

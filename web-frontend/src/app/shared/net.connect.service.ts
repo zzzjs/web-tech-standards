@@ -102,6 +102,7 @@ export class NetConnectService {
       .subscribe((data) => {
         console.log(data);
         if (this.authService.isAdmin()) {
+          this.recipeService.removeRecipe(value.id);
           this.adminService.deleteRecipe(value.id);
         } else {
           this.recipeService.removeRecipe(value.id);

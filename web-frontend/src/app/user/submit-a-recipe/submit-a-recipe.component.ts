@@ -6,6 +6,7 @@ import {NetConnectService} from '../../shared/net.connect.service';
 import {SubmitRecipe} from '../../recipes/models/submit.recipe.model';
 import {UserService} from '../user.service';
 import {Recipe} from '../../recipes/models/recipe.model';
+import {Photo} from '../../recipes/models/photo.model';
 
 @Component({
   selector: 'app-submit-a-recipe',
@@ -15,6 +16,7 @@ import {Recipe} from '../../recipes/models/recipe.model';
 export class SubmitARecipeComponent implements OnInit {
   recipeForm: FormGroup;
   editMode = false;
+  recipe: Recipe;
   private id: number;
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -43,28 +45,35 @@ export class SubmitARecipeComponent implements OnInit {
     this.recipeForm.value.directions.forEach((direction) => {
       directions.push(direction.name);
     });
-    const author = this.editMode ?
-      this.recipeServie.getRecipe(this.id + '').author :
-      this.userService.getUser().username;
-    const submitRecipe = new SubmitRecipe(
-      this.recipeForm.value.name,
-      this.recipeForm.value.imagePath,
-      this.recipeForm.value.description,
-      ingredients,
-      directions,
-      this.recipeForm.value.prep,
-      this.recipeForm.value.cook,
-      this.recipeForm.value.category,
-      author
-    );
     if (this.editMode) {
+      const updateRecipe = {
+        title : this.recipeForm.value.name,
+        category : this.recipeForm.value.category,
+        photo : new Photo(this.recipeForm.value.imagePath, this.recipe.photo.contentType, this.recipe.photo.name),
+        preptime : this.recipeForm.value.prep,
+        cooktime : this.recipeForm.value.cook,
+        description : this.recipeForm.value.description,
+        ingredients : ingredients,
+        directions : directions,
+      };
       const data = {
         id: this.id,
-        recipe: submitRecipe,
+        recipe: updateRecipe,
         user: this.userService.getUser()
       };
       this.netService.updateRecipe(data);
     } else {
+      const submitRecipe = new SubmitRecipe(
+        this.recipeForm.value.name,
+        this.recipeForm.value.imagePath,
+        this.recipeForm.value.description,
+        ingredients,
+        directions,
+        this.recipeForm.value.prep,
+        this.recipeForm.value.cook,
+        this.recipeForm.value.category,
+        this.userService.getUser().username
+      );
       this.netService.submitRecipe(submitRecipe);
     }
   }
@@ -112,15 +121,15 @@ export class SubmitARecipeComponent implements OnInit {
     let category = '';
 
     if (this.editMode) {
-      const recipe = this.recipeServie.getRecipe(this.id + '');
-      recipeName = recipe.title;
-      recipeImagePath = recipe.photo.link;
-      recipeDescription = recipe.description;
-      preptime = recipe.preptime;
-      cooktime = recipe.cooktime;
-      category = recipe.category;
-      if (recipe['ingredients']) {
-        for (const ingredient of recipe.ingredients) {
+      this.recipe = this.recipeServie.getRecipe(this.id + '');
+      recipeName = this.recipe.title;
+      recipeImagePath = this.recipe.photo.link;
+      recipeDescription = this.recipe.description;
+      preptime = this.recipe.preptime;
+      cooktime = this.recipe.cooktime;
+      category = this.recipe.category;
+      if (this.recipe['ingredients']) {
+        for (const ingredient of this.recipe.ingredients) {
           recipeIngredients.push(
             new FormGroup({
               'name': new FormControl(ingredient, Validators.required),
@@ -128,8 +137,8 @@ export class SubmitARecipeComponent implements OnInit {
           );
         }
       }
-      if (recipe['directions']) {
-        for (const direction of recipe.directions) {
+      if (this.recipe['directions']) {
+        for (const direction of this.recipe.directions) {
           recipeDirections.push(
             new FormGroup({
               'name': new FormControl(direction, Validators.required),

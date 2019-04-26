@@ -24,7 +24,7 @@ export class MyRecipeItemComponent implements OnInit {
     const recipe = {
       id: this.recipe.id,
       title: this.recipe.title,
-      user: this.userService.getUser()
+      user: this.recipe.author
     };
     this.netService.deleteRecipe(recipe);
   }
