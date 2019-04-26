@@ -101,8 +101,12 @@ export class NetConnectService {
     this.httpClient.delete(Service_HostName + '/recipe', httpOptions)
       .subscribe((data) => {
         console.log(data);
-        this.recipeService.removeRecipe(value.id);
-        this.userService.removeMyRecipe(value.id);
+        if (this.authService.isAdmin()) {
+          this.adminService.deleteRecipe(value.id);
+        } else {
+          this.recipeService.removeRecipe(value.id);
+          this.userService.removeMyRecipe(value.id);
+        }
       }, error1 => {
         console.log(error1);
       });

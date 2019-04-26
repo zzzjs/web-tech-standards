@@ -14,7 +14,7 @@ import {PersonalRecipe} from '../../../user/models/personalRecipe';
 export class AccountAllRecipesComponent implements OnInit, OnDestroy {
 
   users: User[] = [];
-  selectedOption: any;
+  selectedOption = 'default';
   subscription: Subscription;
   recipes: Recipe[] = [];
 
@@ -25,6 +25,9 @@ export class AccountAllRecipesComponent implements OnInit, OnDestroy {
     this.subscription = this.adminService.usersChanged
       .subscribe((users: User[]) => {
         this.users = users;
+        console.log(this.users);
+        this.checkUserRecipes();
+        console.log(this.recipes);
       });
     this.users = this.adminService.getUsers();
     console.log(this.users);
@@ -40,6 +43,7 @@ export class AccountAllRecipesComponent implements OnInit, OnDestroy {
         });
       }
     });
+    console.log(this.recipes);
   }
 
   ngOnDestroy(): void {

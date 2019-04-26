@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {Recipe} from '../models/recipe.model';
 import {Subscription} from 'rxjs';
 import {RecipeService} from '../recipe.service';
-import {NetConnectService} from '../../shared/net.connect.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -22,8 +21,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   cantonese: Recipe[] = [];
   subscription: Subscription;
 
-  constructor(private recipeService: RecipeService,
-              private router: Router) { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.subscription = this.recipeService.recipesChanged

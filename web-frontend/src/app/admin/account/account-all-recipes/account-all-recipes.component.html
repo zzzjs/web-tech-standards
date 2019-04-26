@@ -3,7 +3,7 @@
     <div class="col-md-7" style="margin-top: 7px">
       <select
         [(ngModel)]="selectedOption">
-        <option value="" selected disabled>Please select</option>
+        <option value="default" selected disabled>Please select</option>
         <option *ngFor="let user of users">
           {{user.username}}
         </option>

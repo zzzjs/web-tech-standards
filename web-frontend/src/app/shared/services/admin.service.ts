@@ -36,4 +36,15 @@ export class AdminService {
     return this.users;
   }
 
+  deleteRecipe(id: string) {
+    this.users.forEach((user: User) => {
+      for (let i = 0; i < user.PersonalRecipes.length; i++) {
+        if (user.PersonalRecipes[i].recipeid === id) {
+          user.PersonalRecipes.splice(i, 1);
+          break;
+        }
+      }
+    });
+    this.usersChanged.next(this.users.slice());
+  }
 }

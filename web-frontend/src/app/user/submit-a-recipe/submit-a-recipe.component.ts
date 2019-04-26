@@ -5,6 +5,7 @@ import {RecipeService} from '../../recipes/recipe.service';
 import {NetConnectService} from '../../shared/net.connect.service';
 import {SubmitRecipe} from '../../recipes/models/submit.recipe.model';
 import {UserService} from '../user.service';
+import {Recipe} from '../../recipes/models/recipe.model';
 
 @Component({
   selector: 'app-submit-a-recipe',
