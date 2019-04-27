@@ -19,6 +19,10 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   cookTime = '';
   prepTime = '';
   favorite = '';
+  href = '';
+  fb_share = 'http://www.facebook.com/share.php?u=';
+  tw_share = 'https://twitter.com/share?url=';
+  pt_share = 'http://pinterest.com/pin/create/button/?url=';
   Auth: Boolean;
   subscription: Subscription;
 
@@ -27,9 +31,15 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private userService: UserService,
               private authService: AuthService,
-              private netService: NetConnectService) { }
+              private netService: NetConnectService,
+              ) { }
 
   ngOnInit() {
+    this.href = document.location.href;
+    this.fb_share += this.href;
+    this.tw_share += this.href;
+    this.pt_share += this.href;
+    console.log(this.fb_share);
     this.route.params
       .subscribe((params: Params) => {
         this.id = params['id'];
@@ -77,4 +87,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  onPrint() {
+    window.print();
+  }
 }

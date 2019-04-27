@@ -58,11 +58,11 @@
       <div class="row; center">
         <p>SHARED</p>
         <ul class="list-inline">
-          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-facebook" style="color: #afa691"></i></a></li>
-          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-twitter" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a [href]="fb_share"><i class="ion ion-logo-facebook" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a [href]="tw_share"><i class="ion ion-logo-twitter" style="color: #afa691"></i></a></li>
           <li style="font-size: 200%"><a href=""><i class="ion ion-logo-instagram" style="color: #afa691"></i></a></li>
-          <li style="font-size: 200%"><a href=""><i class="ion ion-logo-pinterest" style="color: #afa691"></i></a></li>
-          <li style="font-size: 200%"><a href=""><i class="ion ion-md-print" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a [href]="pt_share"><i class="ion ion-logo-pinterest" style="color: #afa691"></i></a></li>
+          <li style="font-size: 200%"><a href="JavaScript:void(0)" (click)="onPrint()"><i class="ion ion-md-print" style="color: #afa691"></i></a></li>
         </ul>
       </div>
     </div>
@@ -97,3 +97,4 @@
     </div>
   </div>
 </div>
+
